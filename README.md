@@ -41,25 +41,25 @@ npm run preview   # Preview production build
 
 ---
 
-## Deploy to Cloudflare Pages
+## Deploy to Cloudflare (Workers & Pages)
 
-### Option A — Git Repository (Recommended, Auto-Deploy on Push)
+This repo includes `wrangler.jsonc` (`assets.directory = "./dist"`, `assets.not_found_handling = "single-page-application"`) and `public/_headers`, so it deploys cleanly on **both** Cloudflare Workers (Static Assets via `npx wrangler deploy`) and Cloudflare Pages (`dist`).
+
+### Option A — Cloudflare Workers & Pages Git Integration (Recommended)
 1. Push this project folder to a **GitHub** or **GitLab** repository.
-2. In the **Cloudflare Dashboard**, go to **Workers & Pages** → **Create** → **Pages** → **Connect to Git** and select your repo.
-3. Configure build settings:
-   - **Framework preset:** `Vite`
+2. In **Cloudflare Dashboard** → **Workers & Pages** → **Create** → connect your repo.
+3. Build settings:
    - **Build command:** `npm run build`
-   - **Build output directory:** `dist`
-   - **Environment variable** (optional — `.node-version` is already set to `22`): `NODE_VERSION` = `22`
-4. Click **Save and Deploy**. SPA routing (`public/_redirects`) and tile referrer headers (`public/_headers`) are applied automatically.
+   - **Deploy command** *(Workers)*: `npx wrangler deploy` — **or** **Build output directory** *(Pages)*: `dist`
+   - **Root directory:** `/`
+4. Click **Save and Deploy**.
 
-### Option B — Direct Upload / Wrangler CLI (No Git Needed)
+### Option B — CLI Deploy
 ```bash
 npm install
 npm run build
-npx wrangler pages deploy dist --project-name=smartpool-karachi
+npx wrangler deploy
 ```
-*(Or drag-and-drop the generated `dist/` folder in Cloudflare Dashboard → Workers & Pages → Create → Pages → Upload assets.)*
 
 ---
 
