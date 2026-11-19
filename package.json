@@ -1,0 +1,39 @@
+{
+  "name": "smartpool-karachi",
+  "private": true,
+  "version": "2.0.0",
+  "description": "SmartPool – AI-Powered Smart Carpooling System for Karachi, Pakistan (Cloudflare Pages + CapacitorJS Android Ready)",
+  "type": "module",
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 5173",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview --host 0.0.0.0 --port 4173",
+    "cap:sync": "npm run build && npx cap sync android",
+    "cap:open": "npx cap open android"
+  },
+  "dependencies": {
+    "@capacitor/core": "^8.6.2",
+    "leaflet": "^1.9.4",
+    "lucide-react": "^1.75.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-leaflet": "^5.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^7.6.10",
+    "@tailwindcss/vite": "^4.3.5",
+    "@types/leaflet": "^1.9.22",
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "oxlint": "^1.90.0",
+    "tailwindcss": "^4.3.5",
+    "typescript": "~7.0.2",
+    "vite": "^8.3.6"
+  }
+}
